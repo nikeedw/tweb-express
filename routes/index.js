@@ -1,5 +1,7 @@
 const express = require('express');
 const multer = require('multer');
+const { UserController } = require('../controllers');
+const authentificateToken = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -14,8 +16,10 @@ const storage = multer.diskStorage({
 
 const uploads = multer({ storage: storage });
 
-router.get('/register', (req, res) => {
-	res.send('register');
-});
+router.post('/register', UserController.register);
+router.post('/login', UserController.login);
+router.get('/current', authentificateToken, UserController.current);
+router.get('/users/:id', authentificateToken, UserController.getUserById);
+router.put('/users/:id', authentificateToken, UserController.updateUser);
 
 module.exports = router;
