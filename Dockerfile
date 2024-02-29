@@ -1,5 +1,5 @@
 # Образ линукс Alpine с версией Node 16
-FROM node:16.13-alpine
+FROM node:20-alpine
 
 # Указываю рабочую директорию
 WORKDIR /app

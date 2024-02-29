@@ -1,0 +1,14 @@
+version: '3'
+services:
+ express-app:
+    build: .
+    ports:
+      - '3000:3000'
+    depends_on:
+      - react-app
+ react-app:
+    build: ../tweb-frontend
+    ports:
+      - '80:80'
+volumes:
+ react_app:
